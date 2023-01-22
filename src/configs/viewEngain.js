@@ -1,3 +1,5 @@
+//Seting up the engine
+
 const handlebars = require('express-handlebars');
 
 function setViewEngine(app) {

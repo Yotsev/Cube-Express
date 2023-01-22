@@ -1,3 +1,5 @@
+//Configuring environments
+
 const config = {
     production : {
         PORT: 3000
