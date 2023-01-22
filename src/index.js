@@ -1,17 +1,17 @@
 //3-rd party libraries
 const express = require('express');
 
-//my modules
+//My modules
 const setViewEngain = require('./configs/viewEngain');
 const config = require('./configs/config');
+const cubeController = require('./controllers/cubeController');
+const routs = require('./routs');
 
+
+//Run app and set middlewares
 const app = express();
 setViewEngain(app); // setup of engine
-
 app.use(express.static('./src/public')) //Setup of static views middleware
-
-app.get('/', (req, res) => {
-    res.render('index');
-})
+app.use(routs);
 
 app.listen(config.PORT, () => { console.log(`Server is running on ${config.PORT}...`) });
