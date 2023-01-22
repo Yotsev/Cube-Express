@@ -34,6 +34,13 @@
       "description": "Very Hard Cube",
       "imageUrl": "https://cdn-cfkdl.nitrocdn.com/RsYdeCXUyMGNzjUpUbtAUDPJnJbVbKpI/assets/static/optimized/rev-58cfe36/wp-content/uploads/2021/01/12-Sided-Teraminx-Black-Magic-Cube.jpg",
       "difficultyLevel": "6"
+    },
+    {
+      "name": "Nice Cube",
+      "description": "Very Nice Cube",
+      "imageUrl": "https://i5.walmartimages.com/asr/d66e14e2-73bd-49d7-a019-a546fdd71558.877779a8c666996d5f159d078c407823.jpeg",
+      "difficultyLevel": "1",
+      "id": 6
     }
   ]
 }
