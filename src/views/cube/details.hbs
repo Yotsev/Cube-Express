@@ -10,13 +10,9 @@
   <h2>Accessories</h2>
   <div class="accessories">
     {{#each cube.accessories}}
-      <div class="accessory">
-        <img src="{{this.imageUrl}}" alt="{{this.name}}">
-        <h3>{{this.nam}}</h3>
-        <p>{{this.description}}</p>
-      </div>
+    {{>accessory}}
     {{else}}
-      <h3 class="italic">This cube has no accessories yet...</h3>
+    <h3 class="italic">This cube has no accessories yet...</h3>
     {{/each}}
   </div>
 </main>
