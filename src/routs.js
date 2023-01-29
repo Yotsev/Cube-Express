@@ -4,7 +4,8 @@ const Router = express.Router;
 const router = Router();
 //Shorthand syntacs: const router = require('express').Router();
 
-const cubeController = require('./controllers/cubeController'); // We need the controllers in the router
+// We need the controllers in the router
+const cubeController = require('./controllers/cubeController'); 
 const homeController = require('./controllers/homeController');
 
 router.get('/', homeController.getHomePage);
