@@ -20,4 +20,4 @@ app.use(routs); //Setup routs
 //Connecting to DB and starting the app only if the db is connected;
 initDatabase() 
     .then(()=> app.listen(config.PORT, () => { console.log(`Server is running on ${config.PORT}...`) }))
-    .catch((err)=> console.error(err)); // Loger should be added here later;
+    .catch((err)=> console.error(err.message)); // Loger should be added here later;

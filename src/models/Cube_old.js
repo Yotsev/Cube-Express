@@ -1,8 +1,9 @@
+//This can be used if you want to work with JSON file. Can be deleted for the project it is not used anymore
 const db = require('../db.json');
 const fs = require('fs');
 const path = require('path');
 
-class Cube {
+class Cube_old {
     constructor(name, description, imageUrl, difficultyLevel) {
         this.name = name,
             this.description = description,
@@ -18,4 +19,4 @@ class Cube {
     }
 };
 
-module.exports = Cube;
+module.exports = Cube_old;
