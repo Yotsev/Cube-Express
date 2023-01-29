@@ -6,12 +6,12 @@ const path = require('path');
 class Cube_old {
     constructor(name, description, imageUrl, difficultyLevel) {
         this.name = name,
-            this.description = description,
-            this.imageUrl = imageUrl,
-            this.difficultyLevel = difficultyLevel;
+        this.description = description,
+        this.imageUrl = imageUrl,
+        this.difficultyLevel = difficultyLevel;
     }
 
-    static save(cube) {
+    save() {
         cube.id = db.cubes[db.cubes.length - 1].id + 1;
         db.cubes.push(cube);
         const jsonData = JSON.stringify(db, null, 2);

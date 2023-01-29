@@ -1,18 +1,17 @@
 //Createing cubeController actions
-const Cube = require('../models/Cube_old.js');
-const db = require('../db.json');
+const Cube = require('../models/Cube');
 
 exports.getCreateCube = (req, res) => {
     res.render('create');
 };
 
-exports.postCreateCube = (req, res) => {
+exports.postCreateCube = async (req, res) => {
     //Get the data form the form    
     const { name, description, imageUrl, difficultyLevel } = req.body;
 
-    //Save the cube
-    let cube = new Cube(name, description, imageUrl, difficultyLevel);
-    Cube.save(cube);
+    //Save the cube to the DB, the properties are passed as a single document(object) this is for mongoose
+    let cube = new Cube({ name, description, imageUrl, difficultyLevel });
+    await cube.save();
 
     //Redirect
     res.redirect('/');
@@ -31,5 +30,5 @@ exports.getCubeDetails = (req, res) => {
         return res.redirect('/404');
     }
 
-    res.render('details', {cube});
+    res.render('details', { cube });
 };
