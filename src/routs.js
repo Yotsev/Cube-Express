@@ -14,13 +14,13 @@ router.get('/', homeController.getHomePage);
 router.get('/about', homeController.getAcoutPage);
 router.get('/404', homeController.getErrorPage);
 
-router.get('/create', cubeController.getCreateCube);
-router.post('/create', cubeController.postCreateCube);
+router.get('/cubes/create', cubeController.getCreateCube);
+router.post('/cubes/create', cubeController.postCreateCube);
 router.get('/cubes/:cubeId/details', cubeController.getCubeDetails);
 router.get('/cubes/:cubeId/attachAccessory', cubeController.getAttachAccessory);
 router.post('/cubes/:cubeId/attachAccessory', cubeController.postAttachAccessory);
 
 //Useing modular routs in the cotrollers directly
-router.use('/accessory', accessoryController);
+router.use('/accessories', accessoryController);
 
 module.exports = router;
