@@ -2,10 +2,13 @@
 
 const config = {
     production : {
-        PORT: 3000
+        PORT: 3000,
+        DB_URI: 'mongodb://127.0.0.1:27017/cubesdb', // Should be different it is here just for consistency
+
     },
     develpment : {
-        PORT: 5000
+        PORT: 5000,
+        DB_URI: 'mongodb://127.0.0.1:27017/cubesdb', // The connection string for the DataBase
     }
 };
 

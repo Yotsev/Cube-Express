@@ -1,9 +1,8 @@
 //Setup of the router
 const express = require('express');
-
-//Shorthand syntacs: const router = require('express').Router();
 const Router = express.Router;
 const router = Router();
+//Shorthand syntacs: const router = require('express').Router();
 
 const cubeController = require('./controllers/cubeController'); // We need the controllers in the router
 const homeController = require('./controllers/homeController');

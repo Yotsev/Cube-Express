@@ -1,10 +1,11 @@
 //Createing homeController actions
-const db = require('../db.json'); // Will be done with services later mb :D
+const db = require('../db.json'); // Will be done with db later
 
 exports.getHomePage = (req, res) => {
     const { search, from: difficultyFrom, to: difficultyTo } = req.query;
     let cubes = db.cubes;
 
+    // Will be done with services later mb :D
     if (search) {
         cubes = cubes.filter(c => c.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
     }
