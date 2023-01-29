@@ -1,6 +1,6 @@
 //Createing cubeController actions
 const Cube = require('../models/Cube');
-
+const Accessory = require('../models/Accessory');
 exports.getCreateCube = (req, res) => {
     res.render('create');
 };
@@ -29,6 +29,17 @@ exports.getCubeDetails = async (req, res) => {
 
 exports.getAttachAccessory = async (req, res) => {
     const cube = await Cube.findById(req.params.cubeId).lean();
+    const accessories = await Accessory.find().lean();
 
-    res.render('./cube/attachAccessory', {cube})
-}
+    res.render('./cube/attachAccessory', { cube, accessories })
+};
+
+exports.postAttachAccessory = async (req, res) => {
+    const cube = await Cube.findById(req.params.cubeId)
+    const accessoryId = req.body.accessory;
+    cube.accessories.push(accessoryId);
+
+    await cube.save();
+
+    res.redirect(`/cubes/${cube._id}/details`);
+};
