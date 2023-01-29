@@ -13,7 +13,13 @@ const accessorySchema = mongoose.Schema({
     imageUrl : {
         type: String,
         require: true,
-        //Add  the htpp/https validation
+        //http/https validarot can be use as this or like in the Cube controller
+        validate: {
+            validator: function(value){
+                return value.startsWith('http://') || value.startsWith('https://');
+            },
+            message: 'Invalid image URL',
+        }
     },
 });
 

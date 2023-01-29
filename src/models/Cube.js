@@ -14,7 +14,8 @@ const cubeSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         require: true,
-        //http validation will be added.
+        //http/https validarot can be use as this or like in the Accessory controller
+        match: [/^https?:\/\//, 'Invalid image URL'],
     },
     difficultyLevel: {
         type: Number,
