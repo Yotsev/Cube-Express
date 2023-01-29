@@ -10,7 +10,7 @@ router.get('/create', (req, res) => {
 router.post('/create', async (req, res) => {
     const { name, description, imageUrl } = req.body;
 
-    await Accessory.create({ name, description, imageUrl }); // Or it can be done like in the cusecontroller
+    await Accessory.create({ name, description, imageUrl }); // Or it can be done like in the cubeController
 
     res.redirect('/');
 });

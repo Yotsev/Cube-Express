@@ -26,3 +26,9 @@ exports.getCubeDetails = async (req, res) => {
 
     res.render('details', { cube });
 };
+
+exports.getAttachAccessory = async (req, res) => {
+    const cube = await Cube.findById(req.params.cubeId).lean();
+
+    res.render('./cube/attachAccessory', {cube})
+}
