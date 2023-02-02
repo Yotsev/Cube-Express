@@ -3,16 +3,16 @@ const mongoose = require('mongoose');
 const accessorySchema = mongoose.Schema({
     name: {
         type: String,
-        require: true,
+        required: true,
     },
     description: {
         type: String,
-        require: true,
+        required: true,
         maxLength: 50
     },
     imageUrl : {
         type: String,
-        require: true,
+        required: true,
         //http/https validarot can be use as this or like in the Cube controller
         validate: {
             validator: function(value){

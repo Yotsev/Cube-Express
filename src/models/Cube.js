@@ -8,18 +8,18 @@ const cubeSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        require: true,
+        required: true,
         maxLength: 50,
     },
     imageUrl: {
         type: String,
-        require: true,
+        required: true,
         //http/https validarot can be use as this or like in the Accessory controller
         match: [/^https?:\/\//, 'Invalid image URL'],
     },
     difficultyLevel: {
         type: Number,
-        require: true,
+        required: true,
         max: 6,
         min: 1,
     },
