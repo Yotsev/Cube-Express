@@ -1,6 +1,6 @@
 //3-rd party libraries
 const express = require('express');
-
+const cookieParser = require('cookie-parser');
 //My modules
 const setViewEngain = require('./configs/viewEngain'); //View Engine;
 const config = require('./configs/config'); // Configs
@@ -13,6 +13,7 @@ setViewEngain(app); // Setup of engine
 
 //Middle wares
 app.use(express.static('./src/public')); //Setup of static views middleware
+app.use(cookieParser());
 app.use(express.urlencoded({extended:false})); //Getting the form data, extended must be provided not useing it for now
 app.use(routs); //Setup routs
 
