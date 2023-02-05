@@ -8,11 +8,14 @@ const router = Router();
 const cubeController = require('./controllers/cubeController'); 
 const homeController = require('./controllers/homeController');
 const accessoryController = require('./controllers/accessoryController');
+const authController = require('./controllers/authController');
 
 //Using routs in the router giving it acctions for the controllers
 router.get('/', homeController.getHomePage);
 router.get('/about', homeController.getAcoutPage);
 router.get('/404', homeController.getErrorPage);
+
+router.use('/', authController);
 
 router.get('/cubes/create', cubeController.getCreateCube);
 router.post('/cubes/create', cubeController.postCreateCube);
