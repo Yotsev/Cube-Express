@@ -13,11 +13,11 @@ const initDatabase = require('./configs/dbInit'); // DB
 const app = express(); // Run app
 setViewEngain(app); // Setup of engine
 
-//Middle wares
+//Middlewares
 app.use(express.static('./src/public')); //Setup of static views middleware
 app.use(cookieParser());
 app.use(express.urlencoded({extended:false})); //Getting the form data, extended must be provided not useing it for now
-app.use(authmiddleware.authenticaion);
+app.use(authmiddleware.authenticaion); //Middlewares for authentication
 app.use(routs); //Setup routs
 
 

@@ -1,11 +1,15 @@
 //Createing cubeController actions
 const Cube = require('../models/Cube');
 const Accessory = require('../models/Accessory');
+const cubeService = require('../services/cubeService');
+const cubeUtils = require('../utils/cubeUtils');
 
+//Get Crate Cude Page
 exports.getCreateCube = (req, res) => {
     res.render('create');
 };
 
+//Post Crate Cube Page
 exports.postCreateCube = async (req, res) => {
     //Get the data form the form    
     const { name, description, imageUrl, difficultyLevel } = req.body;
@@ -18,6 +22,7 @@ exports.postCreateCube = async (req, res) => {
     res.redirect('/');
 };
 
+//Get Cube Details PAge
 exports.getCubeDetails = async (req, res) => {
     const cube = await Cube.findById(req.params.cubeId).populate('accessories').lean();
 
@@ -25,16 +30,18 @@ exports.getCubeDetails = async (req, res) => {
         return res.redirect('/404');
     }
 
-    res.render('/cube/details', { cube });
+    res.render('cube/details', { cube });
 };
 
+//Get Attach Accessory Page
 exports.getAttachAccessory = async (req, res) => {
     const cube = await Cube.findById(req.params.cubeId).lean();
     const accessories = await Accessory.find({ _id: { $nin: cube.accessories } }).lean();
 
-    res.render('/cube/attachAccessory', { cube, accessories })
+    res.render('cube/attachAccessory', { cube, accessories })
 };
 
+//Post Attach Accessory Page
 exports.postAttachAccessory = async (req, res) => {
     const cube = await Cube.findById(req.params.cubeId)
     const accessoryId = req.body.accessory;
@@ -44,3 +51,18 @@ exports.postAttachAccessory = async (req, res) => {
 
     res.redirect(`/cubes/${cube._id}/details`);
 };
+
+//Get Edit Cube Page
+exports.getEditCube = async (req, res) => {
+    const cube = await cubeService.getOneCube(req.params.cubeId).lean();
+    const difficultyLevels = cubeUtils.generateDifficultyLevels(cube.difficultyLevel);
+
+    res.render('cube/edit', { cube, difficultyLevels });
+};
+
+//Get Delete Cube Page
+exports.getDeleteCube = async (req, res) => {
+    const cube = await cubeService.getOneCube(req.params.cubeId).lean();
+
+    res.description('cube/delete', { cube })
+}

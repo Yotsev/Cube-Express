@@ -21,8 +21,14 @@ router.use('/', authController);
 router.get('/cubes/create', isAuthenticated, cubeController.getCreateCube);
 router.post('/cubes/create', isAuthenticated, cubeController.postCreateCube);
 router.get('/cubes/:cubeId/details', cubeController.getCubeDetails);
+router.get('/cubes/:cubeId/edit', cubeController.getEditCube);
+
+router.get('/cubes/:cubeId/delete', cubeController.getDeleteCube);
+
 router.get('/cubes/:cubeId/attachAccessory', cubeController.getAttachAccessory);
 router.post('/cubes/:cubeId/attachAccessory', cubeController.postAttachAccessory);
+
+
 
 //Useing modular routs in the cotrollers directly
 router.use('/accessories', accessoryController);
