@@ -5,10 +5,11 @@ const router = Router();
 //Shorthand syntacs: const router = require('express').Router();
 
 // We need the controllers in the router
-const cubeController = require('./controllers/cubeController'); 
+const cubeController = require('./controllers/cubeController');
 const homeController = require('./controllers/homeController');
 const accessoryController = require('./controllers/accessoryController');
 const authController = require('./controllers/authController');
+const { isAuthenticated } = require('./middlewares/authmiddleware');
 
 //Using routs in the router giving it acctions for the controllers
 router.get('/', homeController.getHomePage);
@@ -17,8 +18,8 @@ router.get('/404', homeController.getErrorPage);
 
 router.use('/', authController);
 
-router.get('/cubes/create', cubeController.getCreateCube);
-router.post('/cubes/create', cubeController.postCreateCube);
+router.get('/cubes/create', isAuthenticated, cubeController.getCreateCube);
+router.post('/cubes/create', isAuthenticated, cubeController.postCreateCube);
 router.get('/cubes/:cubeId/details', cubeController.getCubeDetails);
 router.get('/cubes/:cubeId/attachAccessory', cubeController.getAttachAccessory);
 router.post('/cubes/:cubeId/attachAccessory', cubeController.postAttachAccessory);
