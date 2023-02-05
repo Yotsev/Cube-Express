@@ -1,4 +1,4 @@
-//Seting up the Models for the DB
+//Seting up the Model for the DB
 const mongoose = require('mongoose'); //Can be destrucured const { Schema, model } = require('mongoose');
 
 const cubeSchema = new mongoose.Schema({
