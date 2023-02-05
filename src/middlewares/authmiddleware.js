@@ -12,6 +12,10 @@ exports.authenticaion = async (req, res, next) => {
             //attaching the token to the request
             req.user = decodedToken;
             req.isAuthenticated = true;
+
+            //locals comes for express and handlebarss can read them there are res.locals and req.locals
+            res.locals.username = decodedToken.username;
+            res.locals.isAuthenticated = true;
         } catch (err) {
             console.log(err.message);
 

@@ -28,6 +28,7 @@ router.post('/cubes/:cubeId/delete', cubeController.postDeleteCube);
 router.get('/cubes/:cubeId/attachAccessory', cubeController.getAttachAccessory);
 router.post('/cubes/:cubeId/attachAccessory', cubeController.postAttachAccessory);
 
+
 //Useing modular routs in the cotrollers directly
 router.use('/accessories', accessoryController);
 
