@@ -34,10 +34,12 @@ router.post('/login', async (req, res) => {
 
     try {
         const token = await authService.login(username, password);
+
+        res.cookie('auth', token, {httpOnly: true});
         console.log(token);
     } catch (err) {
         console.log(err);
-        return res.redirect('/');
+        // return res.redirect('/'); In this case the redirec is to the same palce so we use it at the end of the function.
     }
 
     res.redirect('/');
