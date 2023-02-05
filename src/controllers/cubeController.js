@@ -15,7 +15,8 @@ exports.postCreateCube = async (req, res) => {
     const { name, description, imageUrl, difficultyLevel } = req.body;
 
     //Save the cube to the DB, the properties are passed as a single document(object) this is for mongoose
-    let cube = new Cube({ name, description, imageUrl, difficultyLevel });
+    let cube = new Cube({ name, description, imageUrl, difficultyLevel, owner: req.user._id });
+
     await cube.save();
 
     //Redirect
@@ -30,7 +31,10 @@ exports.getCubeDetails = async (req, res) => {
         return res.redirect('/404');
     }
 
-    res.render('cube/details', { cube });
+    const isOwner = cube.owner == req.user._id;
+    //const isOwner = cubeUtils.isOwner(req.user, cube);
+
+    res.render('cube/details', { cube, isOwner });
 };
 
 //Get Attach Accessory Page
@@ -56,6 +60,9 @@ exports.postAttachAccessory = async (req, res) => {
 exports.getEditCube = async (req, res) => {
     const cube = await cubeService.getOneCube(req.params.cubeId).lean();
     const difficultyLevels = cubeUtils.generateDifficultyLevels(cube.difficultyLevel);
+    if(!cubeUtils.isOwner(req.user, cube)){
+        return res. redirect('/404');
+    }
 
     res.render('cube/edit', { cube, difficultyLevels });
 };
