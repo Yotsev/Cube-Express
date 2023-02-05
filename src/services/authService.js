@@ -10,4 +10,20 @@ exports.getUserByUsername = async(username)=> {
 }
 */
 
-exports.register = (username, password) => User.create({ username, password});
+exports.register = (username, password) => User.create({ username, password });
+
+exports.login = async (username, password) => {
+    const user = await this.getUserByUsername(username);
+
+    if (!user) {
+        throw 'Invalid username or password';
+    }
+
+    const isValid = await user.validatePassword(password);
+
+    if (!isValid) {
+        throw 'Invalid username or password';
+    }
+
+    return user;
+};

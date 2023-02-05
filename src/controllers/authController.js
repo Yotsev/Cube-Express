@@ -29,6 +29,20 @@ router.get('/login', (req, res) => {
     res.render('auth/login');
 });
 
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await authService.login(username, password);
+        console.log(user);
+    } catch (err) {
+        console.log(err);
+        return res.redirect('/');
+    }
+
+    res.redirect('/');
+});
+
 router.get('logout', (req, res) => {
 });
 
